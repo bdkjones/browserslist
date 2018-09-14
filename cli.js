@@ -100,8 +100,8 @@ if (isArg('--help') || isArg('-h')) {
     var roundWorld = Math.round(worldResult * 100) / 100.0
     process.stdout.write('coverage_global ' + roundWorld + '\n')
 
-    var locResult = browserslist.coverage(browsers, 'us')
-    var roundLoc = Math.round(usResult * 100) / 100.0
+    var locResult = browserslist.coverage(browsers, country)
+    var roundLoc = Math.round(locResult * 100) / 100.0
     process.stdout.write('coverage_local ' + roundLoc + '\n')
   } else if (mode === 'browsers') {
     browsers.forEach(function (browser) {
