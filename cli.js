@@ -60,6 +60,11 @@ if (isArg('--help') || isArg('-h')) {
       if (value) country = value
     } else if (name === '--all' || name === '-a') {
       mode = 'all'
+      if (value) {
+      	country = value
+      } else {
+      	country = 'US'
+      }
     } else {
       error('Unknown arguments ' + args[i] + '.\n\n' + USAGE)
     }
@@ -95,9 +100,9 @@ if (isArg('--help') || isArg('-h')) {
     var roundWorld = Math.round(worldResult * 100) / 100.0
     process.stdout.write('coverage_global ' + roundWorld + '\n')
 
-    var usResult = browserslist.coverage(browsers, 'us')
-    var roundUS = Math.round(usResult * 100) / 100.0
-    process.stdout.write('coverage_us ' + roundUS + '\n')
+    var locResult = browserslist.coverage(browsers, 'us')
+    var roundLoc = Math.round(usResult * 100) / 100.0
+    process.stdout.write('coverage_local ' + roundLoc + '\n')
   } else if (mode === 'browsers') {
     browsers.forEach(function (browser) {
       process.stdout.write(browser + '\n')
